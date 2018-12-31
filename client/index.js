@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { Router, hashHistory, Route, IndexRoute } from 'react-router';
+import App from './components/App';
 
 const client = new ApolloClient({
 	dataIdFromObject: (o) => o.id,
