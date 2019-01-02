@@ -6,7 +6,7 @@ import currentUserQuery from '../queries/CurrentUser';
 
 export default (WrappedComponent) => {
 	class RequireAuth extends Component {
-		componentDidMount() {
+		componentDidUpdate(prevProps, prevState) {
 			if (!this.props.data.loading && !this.props.data.user) {
 				hashHistory.push('/login');
 			}
