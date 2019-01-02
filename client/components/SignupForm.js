@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import { hashHistory } from 'react-router';
 
 import AuthForm from './AuthForm';
@@ -51,4 +51,7 @@ class SignupForm extends Component {
 	}
 }
 
-export default graphql(query)(graphql(Signup)(SignupForm));
+export default compose(
+	graphql(query),
+	graphql(Signup)
+)(SignupForm);
