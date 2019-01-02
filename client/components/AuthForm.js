@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class AuthForm extends Component {
+class AuthForm extends Component {
 	constructor(props) {
 		super(props);
 
@@ -8,27 +8,34 @@ export default class AuthForm extends Component {
 			email: '',
 			password: '',
 		};
+
+		this.onSubmit.bind(this);
 	}
 
-	onSubmit() {}
+	onSubmit(e) {
+		e.preventDefault();
+
+		this.props.onSubmit(this.state);
+
+		this.setState({ email: '', password: '' });
+	}
 
 	render() {
 		return (
 			<div className="row">
-				<form className="col s6">
-					<h3>Login</h3>
-
+				<form onSubmit={this.onSubmit.bind(this)} className="col s6">
 					<div className="input-field">
-						<label>Email</label>
 						<input
+							placeholder="Email"
 							value={this.state.email}
 							onChange={(e) => this.setState({ email: e.target.value })}
 						/>
 					</div>
 
 					<div className="input-field">
-						<label>Password</label>
 						<input
+							placeholder="Password"
+							type="password"
 							value={this.state.password}
 							onChange={(e) => this.setState({ password: e.target.value })}
 						/>
@@ -40,3 +47,5 @@ export default class AuthForm extends Component {
 		);
 	}
 }
+
+export default AuthForm;
