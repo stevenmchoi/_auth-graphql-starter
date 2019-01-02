@@ -8,8 +8,6 @@ class AuthForm extends Component {
 			email: '',
 			password: '',
 		};
-
-		this.onSubmit.bind(this);
 	}
 
 	onSubmit(e) {

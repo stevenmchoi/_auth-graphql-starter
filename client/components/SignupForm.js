@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
+import { hashHistory } from 'react-router';
 
 import AuthForm from './AuthForm';
 import query from '../queries/CurrentUser';
@@ -12,6 +13,12 @@ class SignupForm extends Component {
 		this.state = {
 			errors: [],
 		};
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (!prevProps.data.user && this.props.data.user) {
+			hashHistory.push('/');
+		}
 	}
 
 	onSubmit({ email, password }) {
@@ -44,4 +51,4 @@ class SignupForm extends Component {
 	}
 }
 
-export default graphql(Signup)(SignupForm);
+export default graphql(query)(graphql(Signup)(SignupForm));
