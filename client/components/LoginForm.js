@@ -3,7 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import { hashHistory } from 'react-router';
 
 import AuthForm from './AuthForm';
-import query from '../queries/CurrentUser';
+import currentUserQuery from '../queries/CurrentUser';
 import Login from '../mutations/Login';
 
 class LoginForm extends Component {
@@ -28,7 +28,7 @@ class LoginForm extends Component {
 					email,
 					password,
 				},
-				refetchQueries: [{ query }],
+				refetchQueries: [{ query: currentUserQuery }],
 			})
 			.catch((res) => {
 				this.setState({
@@ -52,6 +52,6 @@ class LoginForm extends Component {
 }
 
 export default compose(
-	graphql(query),
+	graphql(currentUserQuery),
 	graphql(Login)
 )(LoginForm);
