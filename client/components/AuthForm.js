@@ -41,6 +41,12 @@ class AuthForm extends Component {
 						/>
 					</div>
 
+					<ul className="errors">
+						{this.props.errors.map((error) => {
+							return <li key={error}>{error}</li>;
+						})}
+					</ul>
+
 					<button className="btn">Submit</button>
 				</form>
 			</div>
